@@ -19,7 +19,7 @@ namespace WishCinema.Web.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<Result<bool>> Register([FromBody] RegisterRequest request)
+        public async Task<Result<string>> Register([FromBody] RegisterRequest request)
         {
             var result = await _userManager.RegisterAsync(request);
             return result;

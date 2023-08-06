@@ -8,7 +8,7 @@ public class Session : BaseEntity
 
     public long HallId { get; set; }
 
-    public long FilmId { get; set; }
+    public long MovieId { get; set; }
 
     public DateTime StartDate { get; set; }
 
@@ -16,7 +16,7 @@ public class Session : BaseEntity
 
     public virtual Cinema Cinema { get; set; } = null!;
 
-    public virtual Movie Film { get; set; } = null!;
+    public virtual Movie Movie { get; set; } = null!;
 
     public virtual Hall Hall { get; set; } = null!;
 

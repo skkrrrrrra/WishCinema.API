@@ -312,7 +312,7 @@ public partial class MainDbContext : DbContext
             entity.Property(e => e.EndDate)
                 .HasPrecision(0)
                 .HasColumnName("end_date");
-            entity.Property(e => e.FilmId).HasColumnName("film_id");
+            entity.Property(e => e.MovieId).HasColumnName("movie_id");
             entity.Property(e => e.HallId).HasColumnName("hall_id");
             entity.Property(e => e.StartDate)
                 .HasPrecision(0)
@@ -326,8 +326,8 @@ public partial class MainDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("sessions_cinema_id_foreign");
 
-            entity.HasOne(d => d.Film).WithMany(p => p.Sessions)
-                .HasForeignKey(d => d.FilmId)
+            entity.HasOne(d => d.Movie).WithMany(p => p.Sessions)
+                .HasForeignKey(d => d.MovieId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("sessions_film_id_foreign");
 

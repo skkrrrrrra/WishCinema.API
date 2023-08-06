@@ -13,9 +13,13 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+
+        //to do גûםוסעט ג מעהוכüםûי לועמה
         builder.Services.AddScoped<MainDbContext>();
         builder.Services.AddScoped<IUserManager, UserManager>();
+        builder.Services.AddScoped<ICinemas, Cinemas>();
+
+
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
