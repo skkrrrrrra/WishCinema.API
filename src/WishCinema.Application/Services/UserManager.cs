@@ -6,7 +6,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using WishCinema.Application.Requests;
+using WishCinema.Application.Requests.Auth;
+using WishCinema.Application.Responses.Auth;
+using WishCinema.Application.Result;
+using WishCinema.Application.Results;
 using WishCinema.Application.Services.Interfaces;
 using WishCinema.Domain.Entities;
 using WishCinema.Persistence;
@@ -23,7 +26,7 @@ namespace WishCinema.Application.Services
             _configuration = configuration;
         }
 
-        public async Task<bool> RegisterAsync(RegisterRequest request)
+        public async Task<Result<string>> RegisterAsync(RegisterRequest request)
         {
             var user = new User();
             user.UserProfile = new();
@@ -33,7 +36,7 @@ namespace WishCinema.Application.Services
 
             if(result != null)
             {
-                return false;
+                return new InvalidResult<string>("invalid_data");
             }
 
             user = Mapper.Map<User>(request);
@@ -45,7 +48,7 @@ namespace WishCinema.Application.Services
 
             await _dbContext.AddAsync(user);
             await _dbContext.SaveChangesAsync();
-            return true;
+            return new SuccessResult<string>("Success");
         }
 
 
@@ -54,24 +57,24 @@ namespace WishCinema.Application.Services
 
         //}
 
-        public async Task<string> LoginWithPassword(LoginRequest request)
+        public async Task<Result<LoginResponse>> LoginWithPassword(LoginRequest request)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(item => item.Username == request.Username);
 
             if(user == null)
             {
-                return string.Empty;
+                return new InvalidResult<LoginResponse>("user_does_not_exist");
             }
 
             var result = await CheckPasswordHash(user.PasswordHash, user.PasswordSalt, request.Password);
 
             if(result == false)
             {
-                return string.Empty;
+                return new InvalidResult<LoginResponse>("password_is_wrong");
             }
 
             var jwt = await CreateToken(user);
-            return jwt;
+            return new SuccessResult<LoginResponse>(new(jwt));
         }
 
 
@@ -87,6 +90,7 @@ namespace WishCinema.Application.Services
                 return (passwordHash, paswordSalt);
             }
         }
+
         private async Task<bool> CheckPasswordHash(byte[] hash, byte[] salt, string password)
         {
             using (var hmac = new HMACSHA512(salt))

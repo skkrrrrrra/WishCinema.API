@@ -1,6 +1,6 @@
 ﻿using WishCinema.Application.Services;
 
-namespace WishCinema.Application.Requests
+namespace WishCinema.Application.Requests.Auth
 {
     public class RegisterRequest
     {

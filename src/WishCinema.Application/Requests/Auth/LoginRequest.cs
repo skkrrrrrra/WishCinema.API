@@ -1,4 +1,4 @@
-﻿namespace WishCinema.Application.Requests
+﻿namespace WishCinema.Application.Requests.Auth
 {
     public class LoginRequest
     {
