@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WishCinema.Domain.Entities;
-
 namespace WishCinema.Persistence;
 
 public partial class MainDbContext : DbContext
@@ -123,6 +122,7 @@ public partial class MainDbContext : DbContext
             entity.HasKey(e => e.Id).HasName("Halls_pkey");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.CinemaId).HasColumnName("cinema_id");
             entity.Property(e => e.CountOfPlaces).HasColumnName("count_of_places");
             entity.Property(e => e.CreatedAt)
                 .HasPrecision(0)
@@ -134,8 +134,12 @@ public partial class MainDbContext : DbContext
             entity.Property(e => e.UpdatedAt)
                 .HasPrecision(0)
                 .HasColumnName("updated_at");
-        });
 
+            entity.HasOne(d => d.Cinema).WithMany(p => p.Halls)
+                .HasForeignKey(d => d.CinemaId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Halls_Cinemas_id_fkey");
+        });
         modelBuilder.Entity<Movie>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("Movies_pkey");
@@ -149,6 +153,7 @@ public partial class MainDbContext : DbContext
                 .HasColumnName("deleted_at");
             entity.Property(e => e.Director).HasColumnName("director");
             entity.Property(e => e.Title).HasColumnName("title");
+            entity.Property(e => e.PosterLink).HasColumnName("poster_link");
             entity.Property(e => e.UpdatedAt)
                 .HasPrecision(0)
                 .HasColumnName("updated_at");

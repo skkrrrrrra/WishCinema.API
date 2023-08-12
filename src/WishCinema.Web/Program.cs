@@ -18,7 +18,7 @@ internal class Program
         builder.Services.AddScoped<MainDbContext>();
         builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddScoped<ICinemas, Cinemas>();
-
+        builder.Services.AddScoped<ForTestService>();
 
 
         builder.Services.AddControllers();

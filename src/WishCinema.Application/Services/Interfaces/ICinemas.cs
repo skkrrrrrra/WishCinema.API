@@ -7,6 +7,6 @@ namespace WishCinema.Application.Services.Interfaces
     {
         public Task<Result<IEnumerable<SessionModel>>> GetSessionsByCinema(string cinemaTitle);
         public Task<Result<IEnumerable<CinemaModel>>> GetCinemasList();
-
+        public Task<Result<SessionModel>> GetSessionInfo(string cinemaTitle, int sessionId);
     }
 }

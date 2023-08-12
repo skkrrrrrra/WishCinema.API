@@ -8,6 +8,10 @@ public class Hall : BaseEntity
 
     public long CountOfPlaces { get; set; }
 
+    public long CinemaId { get; set; }
+
+    public virtual Cinema Cinema { get; set; } = null!;
+
     public virtual ICollection<Place> Places { get; set; } = new List<Place>();
 
     public virtual ICollection<Session> Sessions { get; set; } = new List<Session>();

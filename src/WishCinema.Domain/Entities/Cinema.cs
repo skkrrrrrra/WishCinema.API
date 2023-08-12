@@ -14,4 +14,6 @@ public class Cinema : BaseEntity
     public decimal Longitude { get; set; }
 
     public virtual ICollection<Session> Sessions { get; set; } = new List<Session>();
+
+    public virtual ICollection<Hall> Halls { get; set; } = new List<Hall>();
 }

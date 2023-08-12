@@ -8,6 +8,7 @@ using WishCinema.Application.Services.Interfaces;
 namespace WishCinema.Web.Controllers
 {
     [AllowAnonymous]
+    [ApiController]
     [Route("api/auth")]
     public class AuthController : ControllerBase
     {

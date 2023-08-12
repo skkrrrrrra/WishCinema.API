@@ -4,6 +4,7 @@ namespace WishCinema.Application.Models
 {
     public class SessionModel
     {
+        public long Id { get; set; }
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
@@ -17,6 +18,7 @@ namespace WishCinema.Application.Models
 
         public SessionModel(Session session)
         {
+            Id = session.Id;
             StartDate = session.StartDate; 
             EndDate = session.EndDate;
             Movie = session.Movie;

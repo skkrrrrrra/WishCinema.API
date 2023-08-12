@@ -36,6 +36,8 @@ namespace WishCinema.Application.Services
             }
             
             var sessions = await _dbContext.Sessions
+                .Include(item => item.Movie)
+                .Include(item => item.Hall)
                 .Where(
                     item => item.CinemaId == cinema.Id
                     && item.StartDate > DateHelper.GetCurrentDateTime())
@@ -43,6 +45,31 @@ namespace WishCinema.Application.Services
                 .ToListAsync();
 
             return new SuccessResult<IEnumerable<SessionModel>>(sessions);
+        }
+
+
+        public async Task<Result<SessionModel>> GetSessionInfo(string cinemaTitle, int sessionId)
+        {
+            var cinema = await _dbContext.Cinemas
+                .FirstOrDefaultAsync(item => item.Title == cinemaTitle);
+
+            if (cinema == null)
+            {
+                return new InvalidResult<SessionModel>("cinema_does_not_exist");
+            }
+
+
+            var session = await _dbContext.Sessions
+                .FirstOrDefaultAsync(item => item.Id == sessionId);
+
+            if(session == null)
+            {
+                return new InvalidResult<SessionModel>("session_does_not_exist");
+            }
+
+            var response = new SessionModel(session);
+
+            return new SuccessResult<SessionModel>(response);
         }
     }
 }

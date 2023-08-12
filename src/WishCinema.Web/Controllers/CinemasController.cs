@@ -6,8 +6,9 @@ using WishCinema.Application.Services.Interfaces;
 
 namespace WishCinema.Web.Controllers
 {
-    [AllowAnonymous]
+    [ApiController]
     [Route("api/cinemas")]
+    [AllowAnonymous]
     public class CinemasController : ControllerBase
     {
         private readonly ICinemas _cinemasService;
@@ -15,6 +16,7 @@ namespace WishCinema.Web.Controllers
         {
             _cinemasService = cinemasService;
         }
+
         [HttpGet]
         public async Task<Result<IEnumerable<CinemaModel>>> GetCinemasList()
         {
@@ -23,10 +25,18 @@ namespace WishCinema.Web.Controllers
         }
 
         [HttpGet]
-        [Route("{cinemaTitle}")]
-        public async Task<Result<IEnumerable<SessionModel>>> GetSessionByCinemaId([FromRoute] string cinemaTitle)
+        [Route("{cinemaTitle}/sessions")]
+        public async Task<Result<IEnumerable<SessionModel>>> GetSessionsByCinemaTitle([FromRoute] string cinemaTitle)
         {
             var result = await _cinemasService.GetSessionsByCinema(cinemaTitle);
+            return result;
+        }
+
+        [HttpGet]
+        [Route("{cinemaTitle}/sessions/{sessionId}")]
+        public async Task<Result<SessionModel>> GetSessionByCinemaId([FromRoute] string cinemaTitle, [FromRoute] int sessionId)
+        {
+            var result = await _cinemasService.GetSessionInfo(cinemaTitle, sessionId);
             return result;
         }
     }
