@@ -8,7 +8,7 @@ public class Product : BaseEntity
         : base(createdAt, updatedAt, deletedAt)
     {
     }
-
+    public Product() { }
     public string Title { get; set; } = null!;
 
     public string ImagePath { get; set; } = null!;

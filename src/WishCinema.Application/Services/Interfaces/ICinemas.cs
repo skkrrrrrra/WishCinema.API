@@ -1,4 +1,4 @@
-﻿using WishCinema.Application.Models;
+﻿using WishCinema.Application.Responses;
 using WishCinema.Application.Result;
 
 namespace WishCinema.Application.Services.Interfaces

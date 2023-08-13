@@ -8,7 +8,7 @@ public class OrderItem : BaseEntity
         : base(createdAt, updatedAt, deletedAt)
     {
     }
-
+    public OrderItem() { }
     public long ProductId { get; set; }
 
     public long OrderId { get; set; }

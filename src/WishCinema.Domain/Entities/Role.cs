@@ -8,7 +8,7 @@ public class Role : BaseEntity
         : base(createdAt, updatedAt, deletedAt)
     {
     }
-
+    public Role() { }
     public string Title { get; set; } = null!;
 
     public long UserId { get; set; }

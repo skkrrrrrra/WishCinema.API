@@ -8,7 +8,7 @@ public class Price : BaseEntity
         : base(createdAt, updatedAt, deletedAt)
     {
     }
-
+    public Price() { }
     public decimal Value { get; set; }
 
     public long PlaceId { get; set; }

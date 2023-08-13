@@ -121,7 +121,7 @@ namespace WishCinema.Application.Services
             var dateTime = DateHelper.GetCurrentDateTime();
             for (int i = 0; i < request.CountOfPlaces; i++)
             {
-                places.Add(new Place(tryToSearchHall.Id, dateTime, dateTime));
+                places.Add(new Place(tryToSearchHall.Id, dateTime, dateTime, null));
             }
 
             await _dbContext.Places.AddRangeAsync(places);

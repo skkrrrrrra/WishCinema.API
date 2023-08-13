@@ -8,7 +8,7 @@ public class Movie : BaseEntity
         : base(createdAt, updatedAt, deletedAt)
     {
     }
-
+    public Movie() { }
     public string Title { get; set; } = null!;
 
     public string PosterLink { get; set; } = null!;

@@ -1,10 +1,11 @@
 ﻿using WishCinema.Domain.Entities;
 
-namespace WishCinema.Application.Models
+namespace WishCinema.Application.Responses
 {
     public class SessionModel
     {
         public long Id { get; set; }
+
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }
@@ -19,7 +20,7 @@ namespace WishCinema.Application.Models
         public SessionModel(Session session)
         {
             Id = session.Id;
-            StartDate = session.StartDate; 
+            StartDate = session.StartDate;
             EndDate = session.EndDate;
             Movie = new MovieModel(session.Movie);
             Tickets = session.Tickets;

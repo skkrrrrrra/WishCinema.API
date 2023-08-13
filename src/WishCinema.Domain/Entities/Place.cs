@@ -17,4 +17,5 @@ public class Place : BaseEntity
     {
         HallId = hallId;
     }
+    public Place() { }
 }

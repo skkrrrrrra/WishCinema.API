@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WishCinema.Application.Models;
+using WishCinema.Application.Responses;
 using WishCinema.Application.Result;
 using WishCinema.Application.Results;
 using WishCinema.Application.Services.Interfaces;

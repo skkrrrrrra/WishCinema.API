@@ -8,7 +8,7 @@ public class Hall : BaseEntity
         : base(createdAt, updatedAt, deletedAt)
     {
     }
-
+    public Hall() { }
     public string Title { get; set; } = null!;
 
     public long CountOfPlaces { get; set; }

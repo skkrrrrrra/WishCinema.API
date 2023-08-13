@@ -10,6 +10,7 @@ public class GenresMovie : BaseEntity
         GenreId = genreId;
         MovieId = movieId;
     }
+    public GenresMovie() { }
 
     public long GenreId { get; set; }
 

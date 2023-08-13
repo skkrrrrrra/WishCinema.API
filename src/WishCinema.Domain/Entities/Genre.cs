@@ -8,6 +8,7 @@ public class Genre : BaseEntity
 
     public virtual ICollection<GenresMovie> GenresMovies { get; set; } = new List<GenresMovie>();
 
+    public Genre() { }
     public Genre(string title, DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
         : base(createdAt, updatedAt, deletedAt)
     {

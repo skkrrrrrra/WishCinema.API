@@ -1,9 +1,11 @@
 ﻿using WishCinema.Domain.Entities;
 
-namespace WishCinema.Application.Models
+namespace WishCinema.Application.Responses
 {
     public class ProductModel
     {
+        public long Id { get; set; }
+
         public string Title { get; set; } = null!;
 
         public string ImagePath { get; set; } = null!;
@@ -14,6 +16,7 @@ namespace WishCinema.Application.Models
 
         public ProductModel(Product product)
         {
+            Id = product.Id;
             Title = product.Title;
             ImagePath = product.ImagePath;
             Description = product.Description;

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WishCinema.Application.Models;
+using WishCinema.Application.Responses;
 using WishCinema.Application.Result;
 using WishCinema.Application.Results;
 using WishCinema.Application.Services.Interfaces;
@@ -59,6 +59,7 @@ namespace WishCinema.Application.Services
 
 
             var session = await _dbContext.Sessions
+                .Include(session => session.Movie)
                 .FirstOrDefaultAsync(item => item.Id == sessionId);
 
             if(session == null)

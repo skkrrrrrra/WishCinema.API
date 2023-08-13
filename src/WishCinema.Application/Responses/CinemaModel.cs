@@ -1,6 +1,6 @@
 ﻿using WishCinema.Domain.Entities;
 
-namespace WishCinema.Application.Models
+namespace WishCinema.Application.Responses
 {
     public class CinemaModel
     {

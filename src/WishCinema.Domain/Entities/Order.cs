@@ -8,7 +8,7 @@ public class Order : BaseEntity
         : base(createdAt, updatedAt, deletedAt)
     {
     }
-
+    public Order() { }
     public long OrderNumber { get; set; }
 
     public decimal TotalOrderitemsPrice { get; set; }

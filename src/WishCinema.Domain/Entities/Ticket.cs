@@ -25,4 +25,5 @@ public class Ticket : BaseEntity
         State = state;
         UserId = null;
     }
+    public Ticket() { }
 }

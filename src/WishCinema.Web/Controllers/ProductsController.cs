@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WishCinema.Application.Models;
+using WishCinema.Application.Responses;
 using WishCinema.Application.Result;
 using WishCinema.Application.Services.Interfaces;
 

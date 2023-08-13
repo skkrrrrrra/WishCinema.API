@@ -8,6 +8,7 @@ public class Session : BaseEntity
         : base(createdAt, updatedAt, deletedAt)
     {
     }
+    public Session() { }
 
     public long CinemaId { get; set; }
 
