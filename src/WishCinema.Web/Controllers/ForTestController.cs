@@ -18,7 +18,6 @@ namespace WishCinema.Web.Controllers
             _testService = testService;
         }
 
-        [Authorize]
         [Route("add-cinema")]
         [HttpPost]
         public async Task<Result<string>> AddCinema(AddCinemaRequest request)
@@ -38,7 +37,6 @@ namespace WishCinema.Web.Controllers
             return new SuccessResult<string>(result.Data);
         }
 
-        [Authorize]
         [Route("add-movie")]
         [HttpPost]
         public async Task<Result<string>> AddMovie(AddMovieRequest request)
@@ -58,7 +56,6 @@ namespace WishCinema.Web.Controllers
             return new SuccessResult<string>(result.Data);
         }
 
-        [Authorize]
         [Route("add-session")]
         [HttpPost]
         public async Task<Result<string>> AddSession(AddSessionRequest request)
@@ -78,6 +75,8 @@ namespace WishCinema.Web.Controllers
             return new SuccessResult<string>(result.Data);
         }
 
+        [Route("add-hall")]
+        [HttpPost]
         public async Task<Result<string>> AddHallToCinema(AddHallRequest request)
         {
             if (request == null)

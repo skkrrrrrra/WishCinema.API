@@ -9,9 +9,9 @@ namespace WishCinema.Application.Models
 
         public DateTime EndDate { get; set; }
 
-        public Movie Movie { get; set; } = null!;
+        public MovieModel Movie { get; set; } = null!;
 
-        public Hall Hall { get; set; } = null!;
+        public long HallId { get; set; }
 
         public IEnumerable<Ticket> Tickets { get; set; } = new List<Ticket>();
 
@@ -21,9 +21,9 @@ namespace WishCinema.Application.Models
             Id = session.Id;
             StartDate = session.StartDate; 
             EndDate = session.EndDate;
-            Movie = session.Movie;
+            Movie = new MovieModel(session.Movie);
             Tickets = session.Tickets;
-            Hall = session.Hall;
+            HallId = session.HallId;
         }
     }
 }

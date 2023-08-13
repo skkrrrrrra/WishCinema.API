@@ -36,12 +36,11 @@ namespace WishCinema.Application.Services
             }
             
             var sessions = await _dbContext.Sessions
-                .Include(item => item.Movie)
-                .Include(item => item.Hall)
+                .Include(session => session.Movie)
                 .Where(
                     item => item.CinemaId == cinema.Id
                     && item.StartDate > DateHelper.GetCurrentDateTime())
-                .Select(item => new SessionModel(item))
+                .Select(session => new SessionModel(session))
                 .ToListAsync();
 
             return new SuccessResult<IEnumerable<SessionModel>>(sessions);
