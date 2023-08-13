@@ -4,7 +4,12 @@ namespace WishCinema.Domain.Entities;
 
 public class Price : BaseEntity
 {
-    public decimal Price1 { get; set; }
+    public Price(DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
+        : base(createdAt, updatedAt, deletedAt)
+    {
+    }
+
+    public decimal Value { get; set; }
 
     public long PlaceId { get; set; }
 

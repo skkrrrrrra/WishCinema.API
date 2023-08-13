@@ -11,4 +11,10 @@ public class Place : BaseEntity
     public virtual ICollection<Price> Prices { get; set; } = new List<Price>();
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
+
+    public Place(long hallId, DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
+        : base(createdAt, updatedAt, deletedAt)
+    {
+        HallId = hallId;
+    }
 }

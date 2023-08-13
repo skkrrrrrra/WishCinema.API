@@ -5,6 +5,11 @@ namespace WishCinema.Domain.Entities;
 
 public class Cinema : BaseEntity
 {
+    public Cinema(DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
+        : base(createdAt, updatedAt, deletedAt)
+    {
+    }
+
     public string Title { get; set; } = null!;
 
     public string Address { get; set; } = null!;

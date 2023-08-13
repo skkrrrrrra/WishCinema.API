@@ -4,6 +4,11 @@ namespace WishCinema.Domain.Entities;
 
 public class Hall : BaseEntity
 {
+    public Hall(DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
+        : base(createdAt, updatedAt, deletedAt)
+    {
+    }
+
     public string Title { get; set; } = null!;
 
     public long CountOfPlaces { get; set; }

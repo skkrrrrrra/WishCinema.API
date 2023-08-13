@@ -4,18 +4,19 @@ using WishCinema.Application.Requests.Test;
 using WishCinema.Application.Result;
 using WishCinema.Application.Results;
 using WishCinema.Application.Services;
+using WishCinema.Application.Services.Interfaces;
 
 namespace WishCinema.Web.Controllers
 {
     [ApiController]
     [Authorize]
-    [Route("api/test")]
-    public class ForTestController : ControllerBase
+    [Route("api/admin")]
+    public class AdminController : ControllerBase
     {
-        private readonly ForTestService _testService;
-        public ForTestController(ForTestService testService)
+        private readonly IAdmin _adminService;
+        public AdminController(IAdmin adminService)
         {
-            _testService = testService;
+            _adminService = adminService;
         }
 
         [Route("add-cinema")]
@@ -27,7 +28,7 @@ namespace WishCinema.Web.Controllers
                 return new InvalidResult<string>("MODEL_NOT_VALID");
             }
 
-            var result = await _testService.AddCinema(request);
+            var result = await _adminService.AddCinema(request);
 
             if (result.ResultType == Domain.Enums.ResultType.Invalid)
             {
@@ -46,7 +47,7 @@ namespace WishCinema.Web.Controllers
                 return new InvalidResult<string>("MODEL_NOT_VALID");
             }
 
-            var result = await _testService.AddMovie(request);
+            var result = await _adminService.AddMovie(request);
 
             if (result.ResultType == Domain.Enums.ResultType.Invalid)
             {
@@ -65,7 +66,7 @@ namespace WishCinema.Web.Controllers
                 return new InvalidResult<string>("MODEL_NOT_VALID");
             }
 
-            var result = await _testService.AddSession(request);
+            var result = await _adminService.AddSession(request);
 
             if (result.ResultType == Domain.Enums.ResultType.Invalid)
             {
@@ -84,7 +85,63 @@ namespace WishCinema.Web.Controllers
                 return new InvalidResult<string>("MODEL_NOT_VALID");
             }
 
-            var result = await _testService.AddHall(request);
+            var result = await _adminService.AddHall(request);
+
+            if (result.ResultType == Domain.Enums.ResultType.Invalid)
+            {
+                return new InvalidResult<string>(result.Error);
+            }
+
+            return new SuccessResult<string>(result.Data);
+        }
+
+        [Route("add-product")]
+        [HttpPost]
+        public async Task<Result<string>> AddProduct(AddProductRequest request)
+        {
+            if (request == null)
+            {
+                return new InvalidResult<string>("MODEL_NOT_VALID");
+            }
+
+            var result = await _adminService.AddProduct(request);
+
+            if (result.ResultType == Domain.Enums.ResultType.Invalid)
+            {
+                return new InvalidResult<string>(result.Error);
+            }
+
+            return new SuccessResult<string>(result.Data);
+        }
+
+        [Route("add-genre")]
+        [HttpPost]
+        public async Task<Result<string>> AddGenre(string title)
+        {
+            if (string.IsNullOrEmpty(title))
+            {
+                return new InvalidResult<string>("TITLE_NOT_VALID");
+            }
+
+            var result = await _adminService.AddGenre(title);
+
+            if (result.ResultType == Domain.Enums.ResultType.Invalid)
+            {
+                return new InvalidResult<string>(result.Error);
+            }
+
+            return new SuccessResult<string>(result.Data);
+        }
+        [Route("add-genre-to-movie")]
+        [HttpPost]
+        public async Task<Result<string>> AddGenreToMovie(AddGenreToMovieRequest request)
+        {
+            if (request == null)
+            {
+                return new InvalidResult<string>("TITLE_NOT_VALID");
+            }
+
+            var result = await _adminService.AddGenreToMovie(request);
 
             if (result.ResultType == Domain.Enums.ResultType.Invalid)
             {

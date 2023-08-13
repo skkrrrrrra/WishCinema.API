@@ -4,6 +4,11 @@ namespace WishCinema.Domain.Entities;
 
 public class Order : BaseEntity
 {
+    public Order(DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
+        : base(createdAt, updatedAt, deletedAt)
+    {
+    }
+
     public long OrderNumber { get; set; }
 
     public decimal TotalOrderitemsPrice { get; set; }

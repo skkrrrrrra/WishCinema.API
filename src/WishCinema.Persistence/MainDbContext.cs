@@ -245,7 +245,7 @@ public partial class MainDbContext : DbContext
                 .HasPrecision(0)
                 .HasColumnName("deleted_at");
             entity.Property(e => e.PlaceId).HasColumnName("place_id");
-            entity.Property(e => e.Price1)
+            entity.Property(e => e.Value)
                 .HasPrecision(8, 2)
                 .HasColumnName("price");
             entity.Property(e => e.UpdatedAt)
@@ -274,6 +274,7 @@ public partial class MainDbContext : DbContext
                 .HasPrecision(8, 2)
                 .HasColumnName("price");
             entity.Property(e => e.Title).HasColumnName("title");
+            entity.Property(e => e.ImagePath).HasColumnName("image_path");
             entity.Property(e => e.UpdatedAt)
                 .HasPrecision(0)
                 .HasColumnName("updated_at");

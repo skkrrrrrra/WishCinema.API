@@ -1,9 +1,15 @@
-﻿using WishCinema.Domain.Entities.Base;
+﻿using System;
+using WishCinema.Domain.Entities.Base;
 
 namespace WishCinema.Domain.Entities;
 
 public class User : BaseEntity
 {
+    public User(DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
+        : base(createdAt, updatedAt, deletedAt)
+    {
+    }
+
     public string Username { get; set; } = null!;
 
     public string Email { get; set; } = null!;

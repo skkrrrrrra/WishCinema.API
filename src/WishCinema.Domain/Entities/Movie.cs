@@ -4,6 +4,11 @@ namespace WishCinema.Domain.Entities;
 
 public class Movie : BaseEntity
 {
+    public Movie(DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
+        : base(createdAt, updatedAt, deletedAt)
+    {
+    }
+
     public string Title { get; set; } = null!;
 
     public string PosterLink { get; set; } = null!;

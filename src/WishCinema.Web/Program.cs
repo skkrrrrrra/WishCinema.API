@@ -14,11 +14,13 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
 
-        //to do גûםוסעט ג מעהוכüםûי לועמה
+        //TODO: גûםוסעט ג מעהוכüםûי לועמה
         builder.Services.AddScoped<MainDbContext>();
         builder.Services.AddScoped<IUserManager, UserManager>();
         builder.Services.AddScoped<ICinemas, Cinemas>();
-        builder.Services.AddScoped<ForTestService>();
+        builder.Services.AddScoped<IProducts, Products>();
+        builder.Services.AddScoped<IAdmin, Admin>();
+
 
 
         builder.Services.AddControllers();

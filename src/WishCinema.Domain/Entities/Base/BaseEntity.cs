@@ -7,4 +7,14 @@ public class BaseEntity
     public DateTime UpdatedAt { get; set; }
     public DateTime? DeletedAt { get; set; }
 
+    public BaseEntity(DateTime createdAt, DateTime updatedAt, DateTime? deletedAt)
+    {
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
+        DeletedAt = deletedAt;
+    }
+    public BaseEntity()
+    {
+
+    }
 }

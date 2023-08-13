@@ -28,8 +28,9 @@ namespace WishCinema.Application.Services
 
         public async Task<Result<string>> RegisterAsync(RegisterRequest request)
         {
-            var user = new User();
-            user.UserProfile = new();
+            var dateTime = DateHelper.GetCurrentDateTime();
+            var user = new User(dateTime, dateTime, null);
+            user.UserProfile = new(dateTime, dateTime, null);
 
 
             var result = await _dbContext.Users.Where(item => item.Phone == request.Phone || item.Username == request.Username).FirstOrDefaultAsync();
@@ -76,10 +77,6 @@ namespace WishCinema.Application.Services
             var jwt = await CreateToken(user);
             return new SuccessResult<LoginResponse>(new(jwt));
         }
-
-
-
-
 
         private async Task<(byte[], byte[])> GetPasswordHashAndSalt(string password)
         {

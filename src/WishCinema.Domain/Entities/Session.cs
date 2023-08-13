@@ -4,6 +4,11 @@ namespace WishCinema.Domain.Entities;
 
 public class Session : BaseEntity
 {
+    public Session(DateTime createdAt, DateTime updatedAt, DateTime? deletedAt) 
+        : base(createdAt, updatedAt, deletedAt)
+    {
+    }
+
     public long CinemaId { get; set; }
 
     public long HallId { get; set; }
