@@ -32,6 +32,7 @@ namespace WishCinema.Web.Controllers
             return result;
         }
 
+        // кривой нейминг - не ошибка, просто запутывает
         [HttpGet]
         [Route("{cinemaTitle}/sessions/{sessionId}")]
         public async Task<Result<SessionModel>> GetSessionByCinemaId([FromRoute] string cinemaTitle, [FromRoute] int sessionId)

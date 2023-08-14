@@ -10,6 +10,7 @@ using WishCinema.Persistence;
 
 namespace WishCinema.Application.Services
 {
+    // может в последствии конфликтовать с сущностью или другим неймспейсом
     public class Admin : IAdmin
     {
         private readonly MainDbContext _dbContext;
@@ -52,6 +53,7 @@ namespace WishCinema.Application.Services
             return new SuccessResult<string>("SUCCESS");
         }
 
+        // создание билетов при создании сеанса избыточно, нужно вынести в отдельный метод и возможно вызывать в этом.
         public async Task<Result<string>> AddSession(AddSessionRequest request)
         {
             //создаем сеанс

@@ -132,6 +132,8 @@ namespace WishCinema.Web.Controllers
 
             return new SuccessResult<string>(result.Data);
         }
+
+        // рассмотреть возможноть манипуляций со списками, добавлять по одному неудачный дизайн
         [Route("add-genre-to-movie")]
         [HttpPost]
         public async Task<Result<string>> AddGenreToMovie(AddGenreToMovieRequest request)
