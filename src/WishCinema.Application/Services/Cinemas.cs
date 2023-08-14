@@ -27,6 +27,10 @@ namespace WishCinema.Application.Services
 
         public async Task<Result<IEnumerable<SessionModel>>> GetSessionsByCinema(string cinemaTitle)
         {
+            // проверить cinemaTitle до запроса в БД
+            //if(string.IsNullOrEmpty(cinemaTitle))
+            //    return понятный инвалид резалт
+
             var cinema = await _dbContext.Cinemas
                 .FirstOrDefaultAsync(item => item.Title == cinemaTitle);
             

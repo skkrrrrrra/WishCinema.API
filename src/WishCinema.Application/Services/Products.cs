@@ -40,11 +40,10 @@ namespace WishCinema.Application.Services
                 .Select(product => new ProductModel(product))
                 .ToListAsync();
 
-            if(products == null || products.Count == 0)
-            {
-                return new InvalidResult<IEnumerable<ProductModel>>("NO_PRODUCTS");
-            }
-            return new SuccessResult<IEnumerable<ProductModel>>(products);
+            // ToListAsync никогда не вернет null
+            return products.Any()
+                ? new SuccessResult<IEnumerable<ProductModel>>(products)
+                : new InvalidResult<IEnumerable<ProductModel>>("NO_PRODUCTS");
         }
     }
 }
