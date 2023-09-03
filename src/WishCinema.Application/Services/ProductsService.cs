@@ -7,10 +7,10 @@ using WishCinema.Persistence;
 
 namespace WishCinema.Application.Services
 {
-    public class Products : IProducts
+    public class ProductsService : IProductsService
     {
         private readonly MainDbContext _dbContext;
-        public Products(MainDbContext dbContext)
+        public ProductsService(MainDbContext dbContext)
         {
             _dbContext = dbContext;
         }

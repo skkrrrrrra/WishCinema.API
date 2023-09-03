@@ -3,7 +3,7 @@ using WishCinema.Application.Result;
 
 namespace WishCinema.Application.Services.Interfaces
 {
-    public interface IProducts
+    public interface IProductsService
     {
         public Task<Result<IEnumerable<ProductModel>>> GetProducts();
         public Task<Result<ProductModel>> GetProductInfo(long productId);

@@ -9,8 +9,9 @@ namespace WishCinema.Web.Controllers
     [Route("api/products")]
     public class ProductsController : ControllerBase
     {
-        private readonly IProducts _productsService;
-        public ProductsController(IProducts productsService)
+        private readonly IProductsService _productsService;
+        private readonly IAuditUserProvider _auditUserProvider;
+        public ProductsController(IProductsService productsService)
         {
             _productsService = productsService;
         }
@@ -27,14 +28,6 @@ namespace WishCinema.Web.Controllers
         public async Task<Result<ProductModel>> ProductInfo(long productId)
         {
             var result = await _productsService.GetProductInfo(productId);
-            return result;
-        }
-
-        [HttpGet]
-        [Route("buy/{productId}")]
-        public async Task<Result<string>> Buy(long productId)
-        {
-            var result = await _productsService.BuyProduct(productId);
             return result;
         }
     }

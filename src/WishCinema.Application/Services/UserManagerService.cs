@@ -16,11 +16,12 @@ using WishCinema.Persistence;
 
 namespace WishCinema.Application.Services
 {
-    public class UserManager : IUserManager
+    public class UserManagerService : IUserManagerService
     {
         private readonly MainDbContext _dbContext;
         private readonly IConfiguration _configuration;
-        public UserManager(MainDbContext dbContext, IConfiguration configuration) 
+
+        public UserManagerService(MainDbContext dbContext, IConfiguration configuration) 
         {
             _dbContext = dbContext;
             _configuration = configuration;

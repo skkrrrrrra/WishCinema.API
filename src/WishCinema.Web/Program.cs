@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
@@ -16,11 +18,14 @@ internal class Program
 
         //TODO: גûםוסעט ג מעהוכüםûי לועמה
         builder.Services.AddScoped<MainDbContext>();
-        builder.Services.AddScoped<IUserManager, UserManager>();
-        builder.Services.AddScoped<ICinemas, Cinemas>();
-        builder.Services.AddScoped<IProducts, Products>();
-        builder.Services.AddScoped<IAdmin, Admin>();
-
+        builder.Services.AddScoped<IUserManagerService, UserManagerService>();
+        builder.Services.AddScoped<ICinemasService, CinemasService>();
+        builder.Services.AddScoped<IProductsService, ProductsService>();
+        builder.Services.AddScoped<IAdminService, AdminService>();
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>(); 
+        builder.Services.AddScoped<IAuditUserProvider, AuditUserProvider>();
+        builder.Services.AddScoped<ITicketsService, TicketsService>();
 
 
         builder.Services.AddControllers();

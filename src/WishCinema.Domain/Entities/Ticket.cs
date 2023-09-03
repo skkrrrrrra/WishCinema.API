@@ -17,13 +17,13 @@ public class Ticket : BaseEntity
     public virtual Session Session { get; set; } = null!;
 
     public virtual User User { get; set; } = null!;
-    public Ticket(long placeId, long sessionId, long state, DateTime createdAt, DateTime updatedAt, DateTime? deletedAt)
+    public Ticket(long placeId, long sessionId, long state, int? userId, DateTime createdAt, DateTime updatedAt, DateTime? deletedAt)
         : base(createdAt, updatedAt, deletedAt)
     {
         PlaceId = placeId; 
         SessionId = sessionId; 
         State = state;
-        UserId = null;
+        UserId = userId;
     }
     public Ticket() { }
 }

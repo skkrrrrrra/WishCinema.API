@@ -11,8 +11,8 @@ namespace WishCinema.Web.Controllers
     [AllowAnonymous]
     public class CinemasController : ControllerBase
     {
-        private readonly ICinemas _cinemasService;
-        public CinemasController(ICinemas cinemasService)
+        private readonly ICinemasService _cinemasService;
+        public CinemasController(ICinemasService cinemasService)
         {
             _cinemasService = cinemasService;
         }

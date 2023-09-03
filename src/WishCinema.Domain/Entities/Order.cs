@@ -9,7 +9,8 @@ public class Order : BaseEntity
     {
     }
     public Order() { }
-    public long OrderNumber { get; set; }
+
+    public long State { get; set; }
 
     public decimal TotalOrderitemsPrice { get; set; }
 

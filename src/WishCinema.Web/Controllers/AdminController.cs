@@ -13,8 +13,8 @@ namespace WishCinema.Web.Controllers
     [Route("api/admin")]
     public class AdminController : ControllerBase
     {
-        private readonly IAdmin _adminService;
-        public AdminController(IAdmin adminService)
+        private readonly IAdminService _adminService;
+        public AdminController(IAdminService adminService)
         {
             _adminService = adminService;
         }

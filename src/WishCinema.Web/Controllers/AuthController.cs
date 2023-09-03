@@ -12,8 +12,8 @@ namespace WishCinema.Web.Controllers
     [Route("api/auth")]
     public class AuthController : ControllerBase
     {
-        private readonly IUserManager _userManager;
-        public AuthController(IUserManager userManager)
+        private readonly IUserManagerService _userManager;
+        public AuthController(IUserManagerService userManager)
         {
             _userManager = userManager; 
         }

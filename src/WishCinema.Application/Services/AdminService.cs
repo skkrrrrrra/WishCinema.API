@@ -10,10 +10,10 @@ using WishCinema.Persistence;
 
 namespace WishCinema.Application.Services
 {
-    public class Admin : IAdmin
+    public class AdminService : IAdminService
     {
         private readonly MainDbContext _dbContext;
-        public Admin(MainDbContext dbContext)
+        public AdminService(MainDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -89,7 +89,7 @@ namespace WishCinema.Application.Services
             var dateTime = DateHelper.GetCurrentDateTime();
             for (int i = 0; i < places.Count(); i++)
             {
-                tickets.Add(new Ticket(places[i].Id, session.Id, 0, dateTime, dateTime, null));
+                tickets.Add(new Ticket(places[i].Id, session.Id, 0, -1, dateTime, dateTime, null));
             }
 
             await _dbContext.Tickets.AddRangeAsync(tickets);

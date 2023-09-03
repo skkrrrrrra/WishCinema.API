@@ -3,7 +3,7 @@ using WishCinema.Application.Result;
 
 namespace WishCinema.Application.Services.Interfaces
 {
-    public interface ICinemas
+    public interface ICinemasService
     {
         public Task<Result<IEnumerable<SessionModel>>> GetSessionsByCinema(string cinemaTitle);
         public Task<Result<IEnumerable<CinemaModel>>> GetCinemasList();

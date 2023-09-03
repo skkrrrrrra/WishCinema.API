@@ -4,6 +4,7 @@ namespace WishCinema.Application.Responses
 {
     public class MovieModel
     {
+        public int Id { get; set; }
         public string Title { get; set; } = null!;
 
         public string PosterLink { get; set; } = null!;

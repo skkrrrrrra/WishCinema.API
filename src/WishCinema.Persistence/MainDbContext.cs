@@ -170,7 +170,6 @@ public partial class MainDbContext : DbContext
             entity.Property(e => e.DeletedAt)
                 .HasPrecision(0)
                 .HasColumnName("deleted_at");
-            entity.Property(e => e.OrderNumber).HasColumnName("order_number");
             entity.Property(e => e.TotalOrderitemsPrice)
                 .HasPrecision(8, 2)
                 .HasColumnName("total_orderitems_price");
@@ -183,6 +182,9 @@ public partial class MainDbContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("orders_user_id_foreign");
+
+            entity.Property(e => e.State).HasColumnName("state");
+
         });
 
         modelBuilder.Entity<OrderItem>(entity =>
@@ -197,6 +199,7 @@ public partial class MainDbContext : DbContext
                 .HasPrecision(0)
                 .HasColumnName("deleted_at");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
+            entity.Property(e => e.CategoryId).HasColumnName("category_id");
             entity.Property(e => e.ProductId).HasColumnName("product_id");
             entity.Property(e => e.UpdatedAt)
                 .HasPrecision(0)

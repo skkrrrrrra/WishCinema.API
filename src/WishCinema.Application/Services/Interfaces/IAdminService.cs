@@ -5,7 +5,7 @@ using WishCinema.Application.Result;
 using WishCinema.Application.Results;
 namespace WishCinema.Application.Services.Interfaces
 {
-    public interface IAdmin
+    public interface IAdminService
     {
         public Task<Result<string>> AddHall(AddHallRequest request);
         public Task<Result<string>> AddSession(AddSessionRequest request);
